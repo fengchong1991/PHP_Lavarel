@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dashconfig>
+	<clocks>
+		<clock>
+			<name>Canberra</name>
+			<timezone>+10</timezone>
+		<timezone></timezone>
+		<timezone></timezone>
+	</clocks>
+
+	<blocks>
+
+	</blocks>
+
+</dashconfig>
