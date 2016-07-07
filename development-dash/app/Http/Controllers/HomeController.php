@@ -10,20 +10,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use GuzzleHttp\Client;
+use App\Configs;
 
 
 class HomeController extends Controller
 {
     
-    function readConfig(){
-
-    	$cofigFile = file_get_contents('../dashconfig');
-
-    	return $cofigFile;
-
-
-    }
-
 
 
     /*
@@ -62,28 +54,34 @@ class HomeController extends Controller
        	return $stats;
     }
 
-    function getEasyEmployerStats(){
-    	// TODO
-    }
+   
 
-    function getJiraStats(){
-    	// TODO
-    }
-
-    function getGitlabStats(){
-    	// TODO
-    }
 
 
     public function index(){
-   		$GH_stats = $this->GH_parseResponse();
 
+        $configurator = new Configs;
+        $configs = $configurator->readConfigs();
+
+        $clocks = array();
+        $blocks = array();
+
+
+        foreach($configs as $config){
+            if($config['provider'] == 'clock'){
+                array_push($clocks, $config);
+            }else{
+                array_push($blocks,$config);
+            }
+        }
+        
+      
+        $GH_stats = $this->GH_parseResponse();
     	return view('home',[
-    		'GH_OpenPullRequest' => $GH_stats['GH_OpenPullRequest']
-    		]);
+    		'GH_OpenPullRequest' => $GH_stats['GH_OpenPullRequest'],
+    		'clocks' => $clocks,
+            'blocks' => $blocks
+            ]);
 
-    	//return $this->readConfig();
     }
-
-
 }

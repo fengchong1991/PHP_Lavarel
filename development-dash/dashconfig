@@ -1,15 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dashconfig>
-	<clocks>
-		<clock>
-			<name>Canberra</name>
-			<timezone>+10</timezone>
-		<timezone></timezone>
-		<timezone></timezone>
-	</clocks>
-
 	<blocks>
-
+		<provider>clock</provider>         
+		<name>Canberra</name>
+		<timezone>Australia/Canberra</timezone>   
 	</blocks>
 
+	<blocks>
+		<provider>clock</provider>        
+		<name>New York</name>
+		<timezone>America/New_York</timezone> 
+	</blocks>	
+
+	<blocks>
+		<provider>clock</provider>        
+		<name>Perth</name>
+		<timezone>Australia/Perth</timezone> 
+	</blocks>	
+
+	<blocks>
+		<provider>clock</provider>        
+		<name>Beijing</name>
+		<timezone>PRC</timezone> 
+	</blocks>	
+	<blocks>
+		<provider>clock</provider>        
+		<name>London</name>
+		<timezone>Europe/London</timezone> 
+	</blocks>	
+
+	<blocks>
+		<provider>clock</provider>        
+		<name>Shanghai</name>
+		<timezone>PRC</timezone> 
+	</blocks>	
+	
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>deploy time</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>deploy time</feature>
+		<server>hotfix-app.easyemployer.com</server>
+	</blocks>	
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>
+	
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+		<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+	
+
+		<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+	
+
+
+	
 </dashconfig>

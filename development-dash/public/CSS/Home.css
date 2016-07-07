@@ -1,0 +1,72 @@
+body{
+    background-color: black;
+}
+
+.well{
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 10px;
+    padding:0px;
+}
+
+.block{    
+    background-color: #2a2a2a;
+    color: white;
+}
+
+.col-sm-3{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.clockColumn{
+
+    background-color: #2a2a2a;
+    background-clip: content-box;
+    padding-left: 2.5px;
+    padding-right: 3px;
+}
+
+.jumbotron{
+    padding:25px;
+    color:white;
+    background-color: #222222;
+}
+
+.dashBlock{
+    padding: 1px 1px 6px 1px;
+}
+
+
+
+.clockDash{
+    border-radius: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 0px;
+    padding-bottom: 338px;
+}
+
+.clockBlock{
+    border-radius: 20px;
+    background-color: #1b1b1b;
+    text-align: center;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 8px;
+    background-clip:content-box;
+    margin-top: 17px;
+    margin-bottom: 10px;
+}
+
+.status-success{
+    color:#94ce68;
+}
+
+.status-fail{
+    color:#ff0000;
+}
+
+.provider{
+    color:#0eb2d0;
+}
