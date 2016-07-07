@@ -55,44 +55,6 @@
 		<server>app1.aws2.easyemployer.com</server>
 	</blocks>	
 
-	<blocks>
-		<provider>easyEMPLOYER</provider>        
-		<feature>status</feature>
-		<server>app1.aws2.easyemployer.com</server>
-	</blocks>
-	
-	<blocks>
-		<provider>easyEMPLOYER</provider>        
-		<feature>status</feature>
-		<server>app1.aws2.easyemployer.com</server>
-	</blocks>	
-
-	<blocks>
-		<provider>easyEMPLOYER</provider>        
-		<feature>status</feature>
-		<server>app1.aws2.easyemployer.com</server>
-	</blocks>	
-
-	<blocks>
-		<provider>easyEMPLOYER</provider>        
-		<feature>status</feature>
-		<server>app1.aws2.easyemployer.com</server>
-	</blocks>	
-
-		<blocks>
-		<provider>easyEMPLOYER</provider>        
-		<feature>status</feature>
-		<server>app1.aws2.easyemployer.com</server>
-	</blocks>	
-	
-
-		<blocks>
-		<provider>easyEMPLOYER</provider>        
-		<feature>status</feature>
-		<server>app1.aws2.easyemployer.com</server>
-	</blocks>	
-	
-
 
 	
 </dashconfig>
