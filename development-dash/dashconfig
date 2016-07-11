@@ -3,7 +3,7 @@
 	<blocks>
 		<provider>clock</provider>         
 		<name>Canberra</name>
-		<timezone>Australia/Canberra</timezone>   
+		<timezone>Australia/badtimezone</timezone>   
 	</blocks>
 
 	<blocks>
@@ -34,10 +34,12 @@
 		<name>Shanghai</name>
 		<timezone>PRC</timezone> 
 	</blocks>	
-	
+
+
 
 	<blocks>
-		<provider>easyEMPLOYER</provider>        
+		<provider>easyEMPLOYER</provider> 
+		<name>aws2 server</name>       
 		<feature>deploy time</feature>
 		<server>app1.aws2.easyemployer.com</server>
 	</blocks>	
@@ -46,13 +48,59 @@
 	<blocks>
 		<provider>easyEMPLOYER</provider>        
 		<feature>deploy time</feature>
-		<server>hotfix-app.easyemployer.com</server>
+		<name>hotfix server</name>       
+		<server>random.easyemployer.com</server>
 	</blocks>	
 
 	<blocks>
 		<provider>easyEMPLOYER</provider>        
 		<feature>status</feature>
+		<name>aws2 server</name>       
 		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+		<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<name>aws2 server</name>       
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<feature>status</feature>
+		<name>aws2 server</name>       
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<name>aws2 server</name>       
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<name>aws2 server</name>       
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<name>aws2 server</name>       
+		<feature>status</feature>
+		<server>app1.aws2.easyemployer.com</server>
+	</blocks>	
+	<blocks>
+		<provider>easyEMPLOYER</provider>        
+		<name>aws2 server</name>       
+		<feature>status</feature>
+		<server>app1.aws12.easyemployer.com</server>
 	</blocks>	
 
 

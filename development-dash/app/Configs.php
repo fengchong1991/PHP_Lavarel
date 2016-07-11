@@ -7,8 +7,10 @@ The model that stores dev dash configs.
 namespace App;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use DateTimeZone;
 use DateTime;
+use Exception;
 
 class Configs
 {
@@ -28,7 +30,6 @@ class Configs
 				$blockConfig['provider'] = $block->provider;
 				$blockConfig['name'] = $block->name;
 				$blockConfig['timezone'] = $this->Clock_getTimeOffset($block->timezone);
-
 				array_push($this->configurations,$blockConfig);
 			}
 
@@ -36,18 +37,15 @@ class Configs
 			// Handle easyEmployer blocks
 			if(strtolower($block->provider) == 'easyemployer'){
 				if(strtolower($block->feature) == 'deploy time'){
-					$blockConfig['name'] = 'Deploy Time';
+					$blockConfig['feature'] = 'Deploy Time';
 					$blockConfig['version']=$this->EE_GetDeployTime($block->server);
-
 				}elseif(strtolower($block->feature) == 'status'){
-					$blockConfig['name'] = 'Server Status';
-
+					$blockConfig['feature'] = 'Server Status';
 					$blockConfig['status'] = $this->EE_GetServerStatus($block->server);
 				}
 				
-				$serverName = explode('.',$block->server)[0].'.'.explode('.',$block->server)[1];
 				
-				$blockConfig['server']=$serverName;
+				$blockConfig['name']=$block->name;
 				$blockConfig['provider'] = 'easyEmployer';
 				array_push($this->configurations,$blockConfig);
 
@@ -66,46 +64,57 @@ class Configs
 
 	// Get time offset between destination time and UTC time
     function Clock_getTimeOffset($dest){
-		$destTimezone = new DateTimeZone($dest);
-		$UTCTimezone = new DateTimeZone("UTC");
+    	try{
+    		$destTimezone = new DateTimeZone($dest);
+    	}catch (Exception $e){
+    		return "Unkown or bad timezone!";
+    	}
 
-		$destTime = new DateTime("now",$destTimezone);
-		$UTCTime = new DateTime("now",$UTCTimezone);
+    		$UTCTimezone = new DateTimeZone("UTC");
+			
+			$destTime = new DateTime("now",$destTimezone);
+			$UTCTime = new DateTime("now",$UTCTimezone);
 
-		$UTCOffset = $UTCTimezone->getOffset($UTCTime);
-		$destOffset = $destTimezone->getOffset($destTime);
+			$UTCOffset = $UTCTimezone->getOffset($UTCTime);
+			$destOffset = $destTimezone->getOffset($destTime);
 
-		$diff = $destOffset - $UTCOffset;    
+			$diff = $destOffset - $UTCOffset;    
 
-		return $diff/3600;
+			return $diff/3600;
+    	
 	}
 
 
+	// Get last deployed time for servers
 	function EE_GetDeployTime($serverAddress){
-		
 		$address = 'https://'.$serverAddress.'/version.json';
 		$client = new Client();
-    	$request = $client->get($address,['verify' => false]);
 
-    	$versionJson = json_decode($request->getBody());
-
-    	$timezone = new DateTimeZone('Australia/Canberra');
-    	$date = new DateTime("now",$timezone);
-    	$date->setTimestamp($versionJson->version);
-
-    	return $date->format('Y-m-d H:i:s');
+		try{
+	    	$request = $client->get($address,['verify' => false]);
+	    	$versionJson = json_decode($request->getBody());
+	    	$timezone = new DateTimeZone('Australia/Canberra');
+	    	$date = new DateTime("now",$timezone);
+	    	$date->setTimestamp($versionJson->version);
+	    	return $date->format('Y-m-d H:i:s');
+    	}catch (RequestException $e){
+    		return "Something wrong with this configuration!";
+    	}
 	}
 
 
-
+	// Get server test suite status 
 	function EE_GetServerStatus($serverAddress){
 		$address = $serverAddress.'/status/index.php';
 		$client = new Client();
-		$request = $client->get($address,['verify' => false]);
 
-		$words = preg_split('/\s+/', trim($request->getBody()));
-
-		return end($words);
+		try{
+			$request = $client->get($address,['verify' => false]);
+			$words = preg_split('/\s+/', trim($request->getBody()));
+			return end($words);
+		}catch (RequestException $e){
+			return "Something wrong with this configuration!";
+ 		}
 	}
 
 

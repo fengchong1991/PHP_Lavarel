@@ -31,9 +31,13 @@
                 <div class='block clockBlock col-sm-3'>
                     <h3>{{$clock['name']}}</h3>
                     <br>
-                     <script provider="text/javascript">
-                        startClock("{{$clock['name']}}",{{$clock['timezone']}});
-                    </script>
+                    @if($clock['timezone'] == 'Unkown or bad timezone!')
+                        <h4 class='status-fail'><strong>{{$clock['timezone']}}</strong></h4>
+                    @else
+                        <script provider="text/javascript">
+                            startClock("{{$clock['name']}}",{{$clock['timezone']}});
+                        </script>
+                    @endif
                 </div>
                    
             @endforeach
@@ -42,24 +46,28 @@
 
 
             @foreach($blocks as $block)
-            <div class="col-sm-3 ">
-                <div class="block dashBlock well">
-                    <h3 ><strong class='provider'>{{$block['provider']}}</strong><br>{{$block['name']}}</h3>
-                    <br>
-                    <h4>{{$block['server']}}</h4>
-                    @if($block['name']=='Server Status')
-                    @if($block['status'] == 'PASS')
-                    <h4 class='status-success'><strong>{{$block['status']}}</strong></h4>
-                    @else
-                    <h4 class='status-fail'><strong>{{$block['status']}}</strong></h4>
-                    @endif
-                    @elseif($block['name']=='Deploy Time')
-                    <h4><strong>{{$block['version']}}</strong></h4>
-                    @endif
+                <div class="col-sm-3 ">
+                    <div class="block dashBlock well">
+                        <h3 ><strong class='provider'>{{$block['provider']}}</strong><br>{{$block['feature']}}</h3>
+                        <br>
+                        <h4>{{$block['name']}}</h4>
+                        @if($block['feature']=='Server Status')
+                            @if($block['status'] == 'PASS')
+                                <h4 class='status-success'><strong>{{$block['status']}}</strong></h4>
+                            @else
+                                <h4 class='status-fail'><strong>{{$block['status']}}</strong></h4>
+                            @endif
 
+                        @elseif($block['feature']=='Deploy Time')
+                            @if ($block['version'] == 'Something wrong with this configuration!')
+                                <h4 class='status-fail'><strong>{{$block['version']}}</strong></h4>
+                            @else
+                                <h4 class='status-success'><strong>{{$block['version']}}</strong></h4>
+                            @endif
 
+                        @endif
+                    </div>
                 </div>
-            </div>
             @endforeach
 
           </div>
